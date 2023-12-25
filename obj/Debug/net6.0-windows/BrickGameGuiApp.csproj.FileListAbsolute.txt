@@ -1,0 +1,16 @@
+F:\My Projects\Games\Brick\bin\Debug\net6.0-windows\BrickGameGuiApp.exe
+F:\My Projects\Games\Brick\bin\Debug\net6.0-windows\BrickGameGuiApp.deps.json
+F:\My Projects\Games\Brick\bin\Debug\net6.0-windows\BrickGameGuiApp.runtimeconfig.json
+F:\My Projects\Games\Brick\bin\Debug\net6.0-windows\BrickGameGuiApp.dll
+F:\My Projects\Games\Brick\bin\Debug\net6.0-windows\BrickGameGuiApp.pdb
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.GameForm.resources
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.csproj.GenerateResource.cache
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.GeneratedMSBuildEditorConfig.editorconfig
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.AssemblyInfoInputs.cache
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.AssemblyInfo.cs
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.csproj.CoreCompileInputs.cache
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.dll
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\refint\BrickGameGuiApp.dll
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.pdb
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\BrickGameGuiApp.genruntimeconfig.cache
+F:\My Projects\Games\Brick\obj\Debug\net6.0-windows\ref\BrickGameGuiApp.dll

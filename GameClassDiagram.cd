@@ -1,40 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="BrickGameGuiApp.Models.GameObject" Collapsed="true">
-    <Position X="4.25" Y="0.75" Width="1.5" />
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\GameObject.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BrickGameGuiApp.Models.Brick" Collapsed="true">
-    <Position X="2" Y="2.25" Width="1.5" />
+    <Position X="2.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Models\Brick.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BrickGameGuiApp.Models.MovableGameObject" Collapsed="true">
-    <Position X="5.25" Y="2.25" Width="1.5" />
+  <Class Name="BrickGameGuiApp.Models.Paddle" Collapsed="true">
+    <Position X="6.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAEACAAAAABAAAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\MovableGameObject.cs</FileName>
+      <HashCode>AAAAAAAAAAAAIAAAAIAAAAACAAAAAQAAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Paddle.cs</FileName>
+      <NewMemberFileName>Models\MovableGameObject.cs</NewMemberFileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="BrickGameGuiApp.Models.Ball" Collapsed="true">
-    <Position X="4.25" Y="3.75" Width="1.5" />
+    <Position X="4.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAIAAAAIAAAAACAAAAAQAAAAEAAAAAAAA=</HashCode>
       <FileName>Models\Ball.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="BrickGameGuiApp.Models.Paddle" Collapsed="true">
-    <Position X="6.5" Y="3.75" Width="1.5" />
+  <Class Name="BrickGameGuiApp.Models.BrickGameEngine" Collapsed="true">
+    <Position X="2" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAAAIAAAAACAAAAAQAAAAEAAAAAAAA=</HashCode>
-      <FileName>Models\Paddle.cs</FileName>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAEAgAAAAI=</HashCode>
+      <FileName>Models\BrickGameEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="BrickGameGuiApp.Models.BoardGameEngine" Collapsed="true">
+    <Position X="2" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\BoardGameEngine.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BrickGameGuiApp.Models.MovableGameObject" Collapsed="true">
+    <Position X="5.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAEACAAAAAJAAAAACAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\MovableGameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="BrickGameGuiApp.Models.Contracts.IEngine" Collapsed="true">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Contracts\IEngine.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="BrickGameGuiApp.Models.Contracts.IMovable" Collapsed="true">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEACAAAAABAAAAACAAAgAAAAAAAAA=</HashCode>
+      <FileName>Models\Contracts\IMovable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

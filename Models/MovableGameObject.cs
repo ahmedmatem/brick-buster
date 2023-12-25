@@ -36,7 +36,7 @@ namespace BrickGameGuiApp.Models
 
         public DirectionName GetDirectionName()
         {
-            if(Direction.X == 0 && Direction.Y == -1)
+            if (Direction.X == 0 && Direction.Y == -1)
             {
                 return DirectionName.Up;
             }

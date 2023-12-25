@@ -1,5 +1,4 @@
 using BrickGameGuiApp.Models;
-using BrickGameGuiApp.Models.Contracts;
 using BrickGameGuiApp.Models.Types;
 using FormTimer = System.Windows.Forms;
 
@@ -7,12 +6,13 @@ namespace BrickGameGuiApp
 {
     public partial class GameForm : Form
     {
-        private IEngine engine;
-
         private FormTimer.Timer timer;
+
         private Brick[,] wall = new Brick[Config.WallRows, Config.WallCols];
-        private Ball ball;
-        private Paddle paddle;
+        private MovableGameObject ball = new Ball();
+        private MovableGameObject paddle = new Paddle();
+
+        private BoardGameEngine engine;
 
         public GameForm()
         {
@@ -20,33 +20,11 @@ namespace BrickGameGuiApp
 
             InitializeWindow();
             InitializeWall();
-            InitializeBall();
-            InitializePaddle();
-
-            engine = new GuiEngine(wall);
-            engine.Run();
-
-            StartGame();
-        }
-
-        private void StartGame()
-        {
-            timer = new FormTimer.Timer();
-            timer.Interval = Config.FrameRate;
-            timer.Tick += MoveBall; // atach MoveBall handler
-            timer.Enabled = true;
-        }
-
-        private void InitializePaddle()
-        {
-            paddle = new Paddle();
-            Controls.Add(paddle);
-        }
-
-        private void InitializeBall()
-        {
-            ball = new Ball();
             Controls.Add(ball);
+            Controls.Add(paddle);
+
+            engine = new BrickGameEngine(wall, paddle, ball, MoveBall);
+            engine.Run();
         }
 
         private void InitializeWindow()
@@ -79,11 +57,11 @@ namespace BrickGameGuiApp
             DirectionName directionName = ball.GetDirectionName();
 
             // Detect ball direction
-            if(directionName == (DirectionName.Up | DirectionName.Left)) // UP-LEFT
+            if (directionName == (DirectionName.Up | DirectionName.Left)) // UP-LEFT
             {
-                
+
             }
-            else if(directionName == (DirectionName.Up | DirectionName.Right)) // UP-RIGHT
+            else if (directionName == (DirectionName.Up | DirectionName.Right)) // UP-RIGHT
             {
 
             }
@@ -104,7 +82,7 @@ namespace BrickGameGuiApp
 
             }
 
-            MoveObject(ball);
+            engine.Move(ball);
         }
 
         // Paddle moving
@@ -114,6 +92,7 @@ namespace BrickGameGuiApp
             if (keyData == Keys.Left)
             {
                 paddle.ChangeDirection(new Point(-1, 0));
+
             }
 
             if (keyData == Keys.Right)
@@ -121,24 +100,9 @@ namespace BrickGameGuiApp
                 paddle.ChangeDirection(new Point(1, 0));
             }
 
-            MoveObject(paddle);
+            engine.Move(paddle);
 
             return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private bool IsPossibleObjectLocation(MovableGameObject obj, Point destination)
-        {
-            return destination.X >= 0 && destination.X < Config.BoardWidth - obj.Width
-                && destination.Y >= 0 && destination.Y < Config.BoardHeight - obj.Height;
-        }
-
-        private void MoveObject(MovableGameObject mgo)
-        {
-            Point destination = mgo.NextLocation();
-            if(IsPossibleObjectLocation(mgo, destination))
-            {
-                mgo.DoMove();
-            }
         }
     }
 }

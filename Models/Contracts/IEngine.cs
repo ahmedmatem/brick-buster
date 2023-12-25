@@ -10,6 +10,6 @@ namespace BrickGameGuiApp.Models.Contracts
     public interface IEngine
     {
         void Run();
-        Brick[,] Wall { get; }
+        void Move(MovableGameObject mgo);
     }
 }

@@ -16,7 +16,6 @@ namespace BrickGameGuiApp.Models
         private Brick[,] wall;
         private MovableGameObject paddle;
         private MovableGameObject ball;
-        private EventHandler BallMove;
 
         public BrickGameEngine(
             Brick[,] wall, 

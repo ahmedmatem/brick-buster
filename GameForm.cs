@@ -18,8 +18,8 @@ namespace BrickGameGuiApp
 
             InitializeWindow();
             InitializeWall();
-            Controls.Add(ball);
-            Controls.Add(paddle);
+            InitializeBall();
+            InitializePaddle();
 
             engine = new BrickGameEngine(wall, paddle, ball);
             engine.Run();
@@ -45,6 +45,16 @@ namespace BrickGameGuiApp
                     Controls.Add(wall[row, col]);
                 }
             }
+        }
+
+        private void InitializeBall()
+        {
+            Controls.Add(ball);
+        }
+
+        private void InitializePaddle()
+        {
+            Controls.Add(paddle);
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

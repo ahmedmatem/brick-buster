@@ -34,5 +34,7 @@ namespace BrickGameGuiApp.Models
             return destination.X >= 0 && destination.X < BoardWidth - obj.Width
                 && destination.Y >= 0 && destination.Y < BoardHeight - obj.Height;
         }
+
+        public abstract void ProcessCmdKey(Keys keyData);
     }
 }

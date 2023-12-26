@@ -21,7 +21,7 @@ namespace BrickGameGuiApp
             Controls.Add(ball);
             Controls.Add(paddle);
 
-            engine = new BrickGameEngine(wall, paddle, ball, MoveBall);
+            engine = new BrickGameEngine(wall, paddle, ball);
             engine.Run();
         }
 
@@ -47,59 +47,9 @@ namespace BrickGameGuiApp
             }
         }
 
-        // Ball moving
-        private void MoveBall(object? sender, EventArgs e)
-        {
-            // TODO: Detect ball collision before move
-            Point nextLocation = ball.NextLocation();
-            DirectionName directionName = ball.GetDirectionName();
-
-            // Detect ball direction
-            if (directionName == (DirectionName.Up | DirectionName.Left)) // UP-LEFT
-            {
-
-            }
-            else if (directionName == (DirectionName.Up | DirectionName.Right)) // UP-RIGHT
-            {
-
-            }
-            else if (directionName == (DirectionName.Down | DirectionName.Left)) // DOWN-LEFT
-            {
-
-            }
-            else if (directionName == (DirectionName.Down | DirectionName.Right)) // DOWN-RIGHT
-            {
-
-            }
-            else if (directionName == DirectionName.Up) // UP
-            {
-
-            }
-            else if (directionName == DirectionName.Down) // DOWN
-            {
-
-            }
-
-            engine.Move(ball);
-        }
-
-        // Paddle moving
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            // Set paddle direction
-            if (keyData == Keys.Left)
-            {
-                paddle.ChangeDirection(new Point(-1, 0));
-
-            }
-
-            if (keyData == Keys.Right)
-            {
-                paddle.ChangeDirection(new Point(1, 0));
-            }
-
-            engine.Move(paddle);
-
+            engine.ProcessCmdKey(keyData);
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }

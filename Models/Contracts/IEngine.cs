@@ -11,5 +11,6 @@ namespace BrickGameGuiApp.Models.Contracts
     {
         void Run();
         void Move(MovableGameObject mgo);
+        void ProcessCmdKey(Keys keyData);
     }
 }

@@ -32,14 +32,14 @@
   <Class Name="BrickGameGuiApp.Models.BrickGameEngine" Collapsed="true">
     <Position X="2" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAEAgAAAAI=</HashCode>
+      <HashCode>AAAAgAAAAAQEAAAAAAAgAAAAAAAAAAAAAAAEAgAAAAI=</HashCode>
       <FileName>Models\BrickGameEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BrickGameGuiApp.Models.BoardGameEngine" Collapsed="true">
     <Position X="2" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QACAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>QACAAAAAAIQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Models\BoardGameEngine.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -55,7 +55,7 @@
   <Interface Name="BrickGameGuiApp.Models.Contracts.IEngine" Collapsed="true">
     <Position X="9.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Models\Contracts\IEngine.cs</FileName>
     </TypeIdentifier>
   </Interface>

@@ -6,7 +6,7 @@ namespace BrickGameGuiApp
 {
     public partial class GameForm : Form
     {
-        private Brick[,] wall = new Brick[Config.WallRows, Config.WallCols];
+        private GameObject[,] wall = new Brick[Config.WallRows, Config.WallCols];
         private MovableGameObject ball = new Ball();
         private MovableGameObject paddle = new Paddle();
 

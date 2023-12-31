@@ -54,19 +54,19 @@ namespace BrickGameGuiApp.Models
             }
             else if (Direction.X == -1 && Direction.Y == -1)
             {
-                return DirectionName.Up | DirectionName.Left;
+                return DirectionName.UpLeft;
             }
             else if (Direction.X == 1 && Direction.Y == -1)
             {
-                return DirectionName.Up | DirectionName.Right;
+                return DirectionName.UpRight;
             }
             else if (Direction.X == -1 && Direction.Y == 1)
             {
-                return DirectionName.Down | DirectionName.Left;
+                return DirectionName.DownLeft;
             }
             else if (Direction.X == 1 && Direction.Y == 1)
             {
-                return DirectionName.Down | DirectionName.Right;
+                return DirectionName.DownRight;
             }
 
             return DirectionName.None;

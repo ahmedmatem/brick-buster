@@ -13,5 +13,9 @@ namespace BrickGameGuiApp.Models.Types
         Down = 0b00000010,      // 2
         Left = 0b00000100,      // 4
         Right = 0b00001000,     // 16
+        UpLeft = 0b00000101,
+        UpRight = 0b00001001,
+        DownLeft = 0b00000110,
+        DownRight = 0b00001010
     }
 }

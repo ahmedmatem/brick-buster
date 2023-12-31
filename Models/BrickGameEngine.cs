@@ -13,12 +13,14 @@ namespace BrickGameGuiApp.Models
 {
     public class BrickGameEngine : BoardGameEngine
     {
-        private Brick[,] wall;
+        private FormTimer timer;
+
+        private GameObject[,] wall;
         private MovableGameObject paddle;
         private MovableGameObject ball;
 
         public BrickGameEngine(
-            Brick[,] wall, 
+            GameObject[,] wall,
             MovableGameObject paddle,
             MovableGameObject ball)
             : base(Config.BoardWidth, Config.BoardHeight)
@@ -30,13 +32,14 @@ namespace BrickGameGuiApp.Models
 
         public override void Run()
         {
-            FormTimer timer = new FormTimer();
+            timer = new FormTimer();
             timer.Interval = Config.FrameRate;
             timer.Tick += MovePaddle;   // atach paddle move handler
             timer.Tick += MoveBall;     // atach ball move event handler
             timer.Enabled = true;
         }
 
+        // Handle Keyboard keys pressing
         public override void ProcessCmdKey(Keys keyData)
         {
             if (keyData == Keys.Left)
@@ -48,6 +51,11 @@ namespace BrickGameGuiApp.Models
             {
                 paddle.ChangeDirection(new Point(1, 0));
             }
+
+            if(keyData == Keys.Down)
+            {
+                paddle.ChangeDirection(new Point(0, 0));
+            }
         }
 
         private void MovePaddle(object? sender, EventArgs e)
@@ -57,37 +65,72 @@ namespace BrickGameGuiApp.Models
 
         private void MoveBall(object? sender, EventArgs e)
         {
+            // Ball next location
+            Point ballNextLocation = ball.NextLocation();
+
             // TODO: Detect ball collision before move
-            Point nextLocation = ball.NextLocation();
-            DirectionName directionName = ball.GetDirectionName();
-
-            // Detect ball direction
-            if (directionName == (DirectionName.Up | DirectionName.Left)) // UP-LEFT
+            if (ballNextLocation.X <= 0 || ballNextLocation.X + ball.Width >= BoardWidth - ball.Width)
             {
-
+                ball.ChangeDirection(new Point(-ball.Direction.X, ball.Direction.Y));
             }
-            else if (directionName == (DirectionName.Up | DirectionName.Right)) // UP-RIGHT
+            else if (ballNextLocation.Y <= 0)
             {
-
+                ball.ChangeDirection(new Point(ball.Direction.X, -ball.Direction.Y));
             }
-            else if (directionName == (DirectionName.Down | DirectionName.Left)) // DOWN-LEFT
+            else if (ballNextLocation.Y + ball.Height >= paddle.Location.Y)
             {
-
+                if (ballNextLocation.X > paddle.Location.X && ballNextLocation.X <= paddle.Location.X + paddle.Width - 1)
+                {
+                    ball.ChangeDirection(new Point(ball.Direction.X, -ball.Direction.Y));
+                }
+                else
+                {
+                    timer.Enabled = false;
+                }
             }
-            else if (directionName == (DirectionName.Down | DirectionName.Right)) // DOWN-RIGHT
-            {
 
-            }
-            else if (directionName == DirectionName.Up) // UP
+            //if (ballNextLocation.Y <= wallHeight) // if (the ball is in the wall)
+            if (ballNextLocation.Y <= wall.GetLength(0) * Config.BrickHeight) // if (the ball is in the wall)
             {
+                // Get the hitted brick
+                GameObject? hittedBrick = GetHittedBrickBy(ballNextLocation);
+                if (hittedBrick != null)
+                {
+                    // Remove hitted brick
+                    hittedBrick.Hide();
 
-            }
-            else if (directionName == DirectionName.Down) // DOWN
-            {
-
+                    // Change ball direction
+                    var ballDirection = ball.GetDirectionName();
+                    if (ballDirection == DirectionName.UpLeft)
+                    {
+                        ball.ChangeDirection(new Point(-1, 1));
+                    }
+                    else if (ballDirection == DirectionName.UpRight)
+                    {
+                        ball.ChangeDirection(new Point(1, 1));
+                    }
+                    ball.Invalidate();
+                }
             }
 
             Move(ball);
+        }
+
+        private GameObject? GetHittedBrickBy(Point ballNextLocation)
+        {
+            for (int row = 0; row < wall.GetLength(0); row++)
+            {
+                for (int col = 0; col < wall.GetLength(1); col++)
+                {
+                    if (!wall[row, col].Visible) continue;
+
+                    if (wall[row, col].Contains(ballNextLocation))
+                    {
+                        return wall[row, col];
+                    }
+                }
+            }
+            return null;
         }
     }
 }

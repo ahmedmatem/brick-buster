@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BrickGameGuiApp.Models.Types;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace BrickGameGuiApp.Models.Contracts
         Point Speed { get; }
         void DoMove();
         Point NextLocation();
+        DirectionName GetDirectionName();
         void ChangeDirection(Point newDirection);
     }
 }

@@ -30,6 +30,7 @@ namespace BrickGameGuiApp
          */
         public static int BrickWidth = BoardWidth / (WallCols - 1);
         public static int BrickHeight = BrickWidth / 3;
+        public static int BrickPoints = 10;
         public static Color BrickColor = Color.Brown;
 
         /*

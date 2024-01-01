@@ -10,6 +10,8 @@ namespace BrickGameGuiApp
         private MovableGameObject ball = new Ball();
         private MovableGameObject paddle = new Paddle();
 
+        private Player player = new Player();
+
         private BoardGameEngine engine;
 
         public GameForm()
@@ -21,7 +23,8 @@ namespace BrickGameGuiApp
             InitializeBall();
             InitializePaddle();
 
-            engine = new BrickGameEngine(wall, paddle, ball);
+            engine = new BrickGameEngine(player, wall, paddle, ball);
+            engine.GameOver += GameOver;
             engine.Run();
         }
 
@@ -61,6 +64,12 @@ namespace BrickGameGuiApp
         {
             engine.ProcessCmdKey(keyData);
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void GameOver(object? sender, GameOverEventArgs e)
+        {
+            labelPlayerScore.Text = e.Player?.Score.ToString();
+            panelGameInfo.Visible = true;
         }
     }
 }

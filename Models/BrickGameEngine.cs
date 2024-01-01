@@ -15,16 +15,19 @@ namespace BrickGameGuiApp.Models
     {
         private FormTimer timer;
 
+        private Player player;
         private GameObject[,] wall;
         private MovableGameObject paddle;
         private MovableGameObject ball;
 
         public BrickGameEngine(
+            Player player,
             GameObject[,] wall,
             MovableGameObject paddle,
             MovableGameObject ball)
             : base(Config.BoardWidth, Config.BoardHeight)
         {
+            this.player = player;
             this.wall = wall;
             this.paddle = paddle;
             this.ball = ball;
@@ -68,7 +71,7 @@ namespace BrickGameGuiApp.Models
             // Ball next location
             Point ballNextLocation = ball.NextLocation();
 
-            // TODO: Detect ball collision before move
+            // Detect ball collision before move
             if (ballNextLocation.X <= 0 || ballNextLocation.X + ball.Width >= BoardWidth - ball.Width)
             {
                 ball.ChangeDirection(new Point(-ball.Direction.X, ball.Direction.Y));
@@ -85,12 +88,17 @@ namespace BrickGameGuiApp.Models
                 }
                 else
                 {
-                    timer.Enabled = false;
+                    // Game is over
+                    timer.Enabled = false; // stop timer
+                    // show game over info panel with player score
+                    GameOverEventArgs eventArgs = new GameOverEventArgs();
+                    eventArgs.Player = player;
+                    OnGameOver(eventArgs);
                 }
             }
 
-            //if (ballNextLocation.Y <= wallHeight) // if (the ball is in the wall)
-            if (ballNextLocation.Y <= wall.GetLength(0) * Config.BrickHeight) // if (the ball is in the wall)
+            // if (the ball is in the wall)
+            if (ballNextLocation.Y <= wall.GetLength(0) * Config.BrickHeight) 
             {
                 // Get the hitted brick
                 GameObject? hittedBrick = GetHittedBrickBy(ballNextLocation);
@@ -98,6 +106,8 @@ namespace BrickGameGuiApp.Models
                 {
                     // Remove hitted brick
                     hittedBrick.Hide();
+                    // Add brick points to player active
+                    player.Score += hittedBrick.Points;
 
                     // Change ball direction
                     var ballDirection = ball.GetDirectionName();

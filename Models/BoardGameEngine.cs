@@ -9,6 +9,8 @@ namespace BrickGameGuiApp.Models
 {
     public abstract class BoardGameEngine : IEngine
     {
+        public event EventHandler<GameOverEventArgs> GameOver;
+
         public int BoardWidth { get;}
         public int BoardHeight { get; }
 
@@ -19,6 +21,15 @@ namespace BrickGameGuiApp.Models
         }
 
         public abstract void Run();
+
+        protected virtual void OnGameOver(GameOverEventArgs e)
+        {
+            EventHandler<GameOverEventArgs> handler = GameOver;
+            if (handler != null)
+            {
+                GameOver?.Invoke(this, e);
+            }
+        }
 
         public virtual void Move(MovableGameObject mgo)
         {
